@@ -48,9 +48,17 @@ class Hero:
         total_armor += armor.add_armor()
         return total_armor
 
-  
+  def defend(self):
+    '''Calculate the total block amount from all armor blocks.
+     return: total_block:Int
+  '''
+    total_block = 0
+    for armor in self.armors:
+      total_block += armor.block()
+      return total_block
 
-  if __name__ == "__main__":
+   
+if __name__ == "__main__":
     # If you run this file from the terminal
     # this block of code is executed.
     ability = Ability("Great Debugging", 50)
