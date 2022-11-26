@@ -20,8 +20,12 @@ class Hero:
 
   
   def fight(self, opponent):
-      players = ["opponent", "current_hero"]
-      print(random.choices(players, self.starting_health))
+      rand_num = random.randint(0,1)
+      if rand_num == 0:
+        print(f"{opponent.name} defeats {self.name}!")
+      elif rand_num == 1:
+        print(f"{self.name} defeats {opponent.name}!")
+   
 
 
 
