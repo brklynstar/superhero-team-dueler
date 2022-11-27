@@ -87,8 +87,12 @@ class Hero:
         else: 
           if self.is_alive == False and opponent.is_alive == True:
             print(f"{self.name} has been defeated! {opponent.name} is the victor!")
+          
           elif self.is_alive == True and opponent.is_alive == False:
             print(f"{opponent.name} has bee defeated! {self.name} is the victor!")
+
+          elif self.is_alive and opponent.is_alive == 0:
+            print(f"No one wins! ")  
       
 
 if __name__ == "__main__":
