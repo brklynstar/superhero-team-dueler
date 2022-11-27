@@ -59,19 +59,62 @@ class Hero:
 
   def take_damage(self, damage):
     damage_amt = damage - self.defend()
+    self.current_health -= damage_amt
     if damage_amt >= 0:
-      self.current_health -= damage_amt
       print(f"{self.name} lost {damage_amt} units of power!")
     else:
       print(f"{self.name} lost no power!")
-  
+      return self.current_health
+
+  def is_alive(self):
+    '''Return True or False depending on whether the hero is alive or not.
+  '''
+    if self.current_health <= 0:
+      return False
+    else: 
+      return True
+
+  def fight(self, opponent):
+      ''' Current Hero will take turns fighting the opponent hero passed in.'''
+      fight = True
+      while fight == True:
+        damage_amt = self.attack()
+        opponent_damage_amt = int(opponent.attack())
+        self.take_damage(opponent_damage_amt)
+        opponent.take_damage(damage_amt)
+        if self.abilities and opponent.abilities == 0:
+          print("Draw!")
+        else: 
+          if self.is_alive == False and opponent.is_alive == True:
+            print(f"{self.name} has been defeated! {opponent.name} is the victor!")
+          elif self.is_alive == True and opponent.is_alive == False:
+            print(f"{opponent.name} has bee defeated! {self.name} is the victor!")
+      
+
 if __name__ == "__main__":
     # If you run this file from the terminal
-    # this block of code is executed.
-    hero = Hero("Grace Hopper", 200)
-    shield = Armor("Shield", 50)
-    hero.add_armor(shield)
-    hero.take_damage(50)
+    # this block is executed.
 
+    hero1 = Hero("Wonder Woman")
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
+    hero1.fight(hero2)
+
+
+# if __name__ == "__main__":
+#     # If you run this file from the terminal
+#     # this block of code is executed.
+#     hero = Hero("Grace Hopper", 200)
+#     hero.take_damage(150)
+#     print(hero.is_alive())
+#     hero.take_damage(15000)
+#     print(hero.is_alive())
 
 
