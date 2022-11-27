@@ -57,23 +57,21 @@ class Hero:
       total_block += armor.block()
       return total_block
 
-   
+  def take_damage(self, damage):
+    damage_amt = damage - self.defend()
+    if damage_amt >= 0:
+      self.current_health -= damage_amt
+      print(f"{self.name} lost {damage_amt} units of power!")
+    else:
+      print(f"{self.name} lost no power!")
+  
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block of code is executed.
-    ability = Ability("Great Debugging", 50)
-    another_ability = Ability("Smarty Pants", 90)
     hero = Hero("Grace Hopper", 200)
-    hero.add_ability(ability)
-    hero.add_ability(another_ability)
-    print(hero.attack())
+    shield = Armor("Shield", 50)
+    hero.add_armor(shield)
+    hero.take_damage(50)
 
-# if __name__ == "__main__":
-#   # If you run this file from the terminal
-#   # this block is executed.
-#   hero1 = Hero("Wonder Woman")
-#   hero2 = Hero("Dumbledore")
-
-#   hero1.fight(hero2)
 
 
