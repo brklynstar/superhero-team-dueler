@@ -1,5 +1,6 @@
 from ability import Ability
 from armor import Armor
+from weapon import Weapon
 
 import random
 # hero.py
@@ -92,24 +93,44 @@ class Hero:
             print(f"{opponent.name} has bee defeated! {self.name} is the victor!")
 
           elif self.is_alive and opponent.is_alive == 0:
-            print(f"No one wins!")  
+            print(f"No one wins!")
+
+  # Add Weapons
+  def add_weapon(self, weapon):
+      '''Add weapon to self.abilities'''
+      self.abilities.append(weapon)
       
+
 
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
+    hero = Hero("Wonder Woman")
+    weapon = Weapon("Lasso of Truth", 90)
+    hero.add_weapon(weapon)
+    print(hero.attack())
 
-    hero1 = Hero("Wonder Woman")
-    hero2 = Hero("Dumbledore")
-    ability1 = Ability("Super Speed", 300)
-    ability2 = Ability("Super Eyes", 130)
-    ability3 = Ability("Wizard Wand", 80)
-    ability4 = Ability("Wizard Beard", 20)
-    hero1.add_ability(ability1)
-    hero1.add_ability(ability2)
-    hero2.add_ability(ability3)
-    hero2.add_ability(ability4)
-    hero1.fight(hero2)
+
+
+
+
+
+
+# if __name__ == "__main__":
+#     # If you run this file from the terminal
+#     # this block is executed.
+
+#     hero1 = Hero("Wonder Woman")
+#     hero2 = Hero("Dumbledore")
+#     ability1 = Ability("Super Speed", 300)
+#     ability2 = Ability("Super Eyes", 130)
+#     ability3 = Ability("Wizard Wand", 80)
+#     ability4 = Ability("Wizard Beard", 20)
+#     hero1.add_ability(ability1)
+#     hero1.add_ability(ability2)
+#     hero2.add_ability(ability3)
+#     hero2.add_ability(ability4)
+#     hero1.fight(hero2)
 
 
 # if __name__ == "__main__":
