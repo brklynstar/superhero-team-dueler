@@ -73,7 +73,7 @@ class Hero:
       return False
     else: 
       return True
-
+  #Fight!
   def fight(self, opponent):
       ''' Current Hero will take turns fighting the opponent hero passed in.'''
       fight = True
@@ -92,7 +92,7 @@ class Hero:
             print(f"{opponent.name} has bee defeated! {self.name} is the victor!")
 
           elif self.is_alive and opponent.is_alive == 0:
-            print(f"No one wins! ")  
+            print(f"No one wins!")  
       
 
 if __name__ == "__main__":
