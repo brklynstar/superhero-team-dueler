@@ -10,6 +10,8 @@ class Hero:
       name: String
       starting_health: Integer
       current_health: Integer
+      abilities: list
+      armors: list
     '''
     
     self.abilities = list()
@@ -17,11 +19,9 @@ class Hero:
     self.name = name
     self.starting_health = starting_health
     self.current_health = starting_health
+    self.deaths = 0
+    self.kills= 0
 
-  #add ability
-  def add_ability(self, ability):
-    ''' Add ability to abilities list '''
-    self.abilities.append(ability)
 
   #fight
   def fight(self, opponent):
@@ -30,6 +30,8 @@ class Hero:
         print(f"{opponent.name} defeats {self.name}!")
       elif rand_num == 1:
         print(f"{self.name} defeats {opponent.name}!")
+      else:
+        print("Draw!")
  
   def attack(self):
     '''Calculate the total damage from all ability attacks.
@@ -60,8 +62,8 @@ class Hero:
 
   def take_damage(self, damage):
     damage_amt = damage - self.defend()
-    self.current_health -= damage_amt
-    if damage_amt >= 0:
+    if damage_amt > 0:
+      self.current_health -= damage_amt
       print(f"{self.name} lost {damage_amt} units of power!")
     else:
       print(f"{self.name} lost no power!")
@@ -74,6 +76,8 @@ class Hero:
       return False
     else: 
       return True
+
+      
   #Fight!
   def fight(self, opponent):
       ''' Current Hero will take turns fighting the opponent hero passed in.'''
@@ -100,6 +104,7 @@ class Hero:
       '''Add weapon to self.abilities'''
       self.abilities.append(weapon)
       
+  #Add Kill
 
 
 if __name__ == "__main__":
@@ -114,7 +119,15 @@ if __name__ == "__main__":
 
 
 
+if __name__ == "__main__":
+    # If you run this file from the terminal
+    # this block of code is executed.
 
+    hero = Hero("Grace Hopper", 200)
+    shield = Armor("Shield", 50)
+    hero.add_armor(shield)
+    hero.take_damage(50)
+    print(hero.current_health)
 
 # if __name__ == "__main__":
 #     # If you run this file from the terminal
